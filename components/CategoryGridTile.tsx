@@ -4,7 +4,7 @@ import {GridInput} from '../models/basicStruct';
 
 const CategoryGridTile=(element:GridInput)=>{
 
-    const {title,color}:GridInput=element;//declare object type instead of it being assumed
+    const {title,color}:GridInput=element;//declare object type instead of it being assumed fo deconstruction
     return <View style={styles.gridItem}>
         <Pressable android_ripple={{color:'#ccc'}} style={({pressed})=>[styles.button,(pressed ? styles.buttonPressed:null)]}>
             <View style={[styles.innerContainer,{backgroundColor:color}]}>
