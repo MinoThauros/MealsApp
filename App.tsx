@@ -14,6 +14,16 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name='MealsCategories' component={CategoriesScreen}/>
+          {/**Every stack object is predefined as sub elements of stacknavigator
+           * The name will reference the component
+           * a navigate prop is passed to the component; we latch on that prop to navigate
+           * 
+           * How it works:
+           * a) the stack is defined here; this doesn't enable navigation
+           * b) we create a bijection between name and coomponent here, this enables naviation between stackscreen objects;
+           *    ->a navigation object is also given to the component through the the Stack.Screen component
+           * c) The component passes a previously defined name to the component's navigate prop object in order to navigate the stack
+           */}
           <Stack.Screen name="MealsOverview" component={MealOverviewScreen} />
         </Stack.Navigator>
       </NavigationContainer> 
