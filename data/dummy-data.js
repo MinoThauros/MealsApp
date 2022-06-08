@@ -12,7 +12,7 @@ export const CATEGORIES = [
   new Category('c8', 'Asian', '#b9ffb0'),
   new Category('c9', 'French', '#ffc7ff'),
   new Category('c10', 'Summer', '#47fced')
-];
+];// categoryId's
 
 export const MEALS = [
   new Meal(

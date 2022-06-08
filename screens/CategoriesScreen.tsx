@@ -13,14 +13,18 @@ const CategoriesScreen=({navigation}:any):JSX.Element=>{
     const renderCategoryItem=function (itemData:any):JSX.Element {
 
         const pressHandler=()=>{
-            navigation.navigate('MealsOverview')
+            navigation.navigate('MealsOverview',{
+                //we render based on a reference passed by itemData
+                //we pass to the called opponent an object which will be taken as a route
+                categoryId:itemData.item.id,//the second element passed in a object
+                //sent as the route params to child
+            })
         };
         //this is where we pass the details to the component
         return <CategoryGridTile title={itemData.item.title} color={itemData.item.color} onPress={pressHandler}/>;
         //the item needs to be accessed using the .item method
         //we dont give the id propriety to the element as its already given to the FlatList
-        //CategoryGridTile expects 
-    }
+    };
 
     return <FlatList data={CATEGORIES}  keyExtractor={(item=>item.id)} renderItem={renderCategoryItem} numColumns={2}/>
     //renderItem receives a callback function on how to display element

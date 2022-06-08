@@ -1,4 +1,4 @@
-export class GridInput {
+class GridInput {
       readonly title:string;
       readonly color:string;
       readonly onPress:any;
@@ -10,3 +10,4 @@ export class GridInput {
       }
       
 }
+export default GridInput;

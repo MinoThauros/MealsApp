@@ -23,6 +23,23 @@ export default function App() {
            * b) we create a bijection between name and coomponent here, this enables naviation between stackscreen objects;
            *    ->a navigation object is also given to the component through the the Stack.Screen component
            * c) The component passes a previously defined name to the component's navigate prop object in order to navigate the stack
+           * 
+           * Priority:
+              Out of the box, the top-most screen (i.e. the first child inside of <Stack.Navigator>) is used as the initial screen.
+
+              I.e., in the following example, the AllProducts screen would be shown as an initial screen when the app starts:
+
+              <Stack.Navigator>
+                <Stack.Screen name="AllProducts" component={AllProducts} /> // initial screen
+                <Stack.Screen name="ProductDetails" component={ProductDetails} />
+              </Stack.Navigator>
+              You can therefore change the initial screen by changing the <Stack.Screen> order.
+               Alternatively, there also is an initialRouteName prop that can be set on the navigator component (i.e., on <Stack.Navigator> in this case):
+
+              <Stack.Navigator initialRouteName="ProductDetails">
+                <Stack.Screen name="AllProducts" component={AllProducts} /> 
+                <Stack.Screen name="ProductDetails" component={ProductDetails} /> // initial screen
+              </Stack.Navigator>
            */}
           <Stack.Screen name="MealsOverview" component={MealOverviewScreen} />
         </Stack.Navigator>
