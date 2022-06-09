@@ -29,5 +29,11 @@ const CategoriesScreen=({navigation}:any):JSX.Element=>{
     return <FlatList data={CATEGORIES}  keyExtractor={(item=>item.id)} renderItem={renderCategoryItem} numColumns={2}/>
     //renderItem receives a callback function on how to display element
 };
+/**design pattern: lower complexity of return portion by fragmenting the flatlist's
+ *structure:
+    => pass rendering to a local variable
+    => local variable fetchees a component which accesses element as element.item
+    => function to be triggered on vent is simply referenced
 
+*/
 export default CategoriesScreen

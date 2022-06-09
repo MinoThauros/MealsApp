@@ -16,8 +16,11 @@ const MealOverviewScreen=({route}:any)=>{
     const catId:any=route.params.categoryId;//check documentation for more detail on the methods on route
 
     const renderMealItem= (itemData:any):JSX.Element=>{
+        const item:Meal=itemData.item;
         return <View>
-            <MealItem title={itemData.item.title}/>
+            <MealItem 
+            {...item}//object deconstruciton; we undo all the key value pairs
+            />
         </View>
     }
 
@@ -29,6 +32,7 @@ const MealOverviewScreen=({route}:any)=>{
     return (
     <View style={styles.container}>
         <FlatList data={displayedMeals} keyExtractor={(item)=>item.id} renderItem={renderMealItem}/>
+        {/**when passewd using flatlist, the data is encapsulated using .item */}
     </View>)
 
 };
