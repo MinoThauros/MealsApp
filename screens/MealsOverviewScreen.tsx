@@ -31,7 +31,11 @@ const MealOverviewScreen=({navigation,route}:any)=>{
         //we dont need to create a new instance unless we wanna access methods;
         //pure typechecking vs instantiation
         const onPress=()=>{
-            navigation.navigate('MealDetails')
+            navigation.navigate('MealDetails',{
+                ingredients:item.ingredients,
+                steps:item.steps
+
+            })
         };
 
         return <View>
