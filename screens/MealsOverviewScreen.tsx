@@ -3,13 +3,14 @@ import { MEALS, CATEGORIES } from "../data/dummy-data";
 import Meal from "../models/meal";
 import { useRoute } from "@react-navigation/native";
 import MealItem from "../components/MealItem";
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 
 //this component should go into the data and find the correspnding element
 //an array of <Meals> object
 
 //we then wish to display all elements which has the correct categoryID
 
+//useEffect vs useLayoutEffect => same but useLayoutEffect triggered directly after DOM muation
 
 const MealOverviewScreen=({navigation,route}:any)=>{
     //given to the component through the Stack.Navigator
@@ -20,17 +21,10 @@ const MealOverviewScreen=({navigation,route}:any)=>{
     console.log(categoryId,categoryName);
      */
     
-    const {categoryId,categoryName}=route.params;//check documentation for more detail on the methods on route
-    console.log(categoryId,categoryName)
-    useEffect(()=>{
-        navigation.setOptions(
-            ({route,navigation}:any)=>{
-                  //const catTitle:any=categoryName;
-                  //route hooks on all the instances of the navigation.navigate prop to which params are passed
-                    return {
-                      title:categoryName,
-                }}
-        );},[categoryId,categoryName,navigation]);
+    const {categoryId,categoryName}=route.params;//hooks; updated everytime
+    console.log(categoryId,categoryName);
+    useLayoutEffect(()=>{//instead of useEffect
+        navigation.setOptions({title:categoryName});},[categoryId,categoryName,navigation]);
         
     const renderMealItem= (itemData:any):JSX.Element=>{
         const item:Meal={...itemData.item};
