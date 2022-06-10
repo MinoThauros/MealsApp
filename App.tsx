@@ -12,8 +12,25 @@ export default function App() {
     <>
     <StatusBar style='dark'/>
       <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen name='MealsCategories' component={CategoriesScreen}/>
+        <Stack.Navigator screenOptions={{//setting default settings
+          headerStyle:{backgroundColor:'#351401',},//check header prop for stackscreen
+          headerTintColor:'white',
+          contentStyle:{
+            backgroundColor:'#3f2f25'//background color as a global variable no longer works
+          }
+        }}>
+          <Stack.Screen name='MealsCategories' component={CategoriesScreen} options={{
+            title:'All Categories',
+            /**
+             * headerStyle:{backgroundColor:'#351401',},//check header prop for stackscreen
+            headerTintColor:'white',
+            contentStyle:{
+              backgroundColor:'#3f2f25'//background color as a global variable no longer works
+            }
+             */
+            
+            
+          }}/>
           {/**Every stack object is predefined as sub elements of stacknavigator
            * The name will reference the component
            * a navigate prop is passed to the component; we latch on that prop to navigate
@@ -41,7 +58,16 @@ export default function App() {
                 <Stack.Screen name="ProductDetails" component={ProductDetails} /> // initial screen
               </Stack.Navigator>
            */}
-          <Stack.Screen name="MealsOverview" component={MealOverviewScreen} />
+          <Stack.Screen 
+            name="MealsOverview" 
+            component={MealOverviewScreen} 
+            //options={({route,navigation}:any)=>{
+            //  const catTitle:any=route.params.categoryName;
+            //  //route hooks on all the instances of the navigation.navigate prop to which params are passed
+            //    return {
+            //      title:catTitle,
+            //}}}
+            />
         </Stack.Navigator>
       </NavigationContainer> 
     </>

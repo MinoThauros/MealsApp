@@ -16,7 +16,9 @@ const MealOverviewScreen=({route}:any)=>{
     const catId:any=route.params.categoryId;//check documentation for more detail on the methods on route
 
     const renderMealItem= (itemData:any):JSX.Element=>{
-        const item:Meal=itemData.item;
+        const item:Meal={...itemData.item};
+        //we dont need to create a new instance unless we wanna access methods;
+        //pure typechecking vs instantiation
         return <View>
             <MealItem 
             {...item}//object deconstruciton; we undo all the key value pairs
@@ -42,6 +44,6 @@ export default MealOverviewScreen
 const styles=StyleSheet.create({
     container:{
         flex:1,
-        padding:16
+        paddingHorizontal:10
     }
 })

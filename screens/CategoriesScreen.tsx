@@ -18,6 +18,7 @@ const CategoriesScreen=({navigation}:any):JSX.Element=>{
                 //we pass to the called opponent an object which will be taken as a route
                 categoryId:itemData.item.id,//the second element passed in a object
                 //sent as the route params to child
+                categoryName:itemData.item.title
             })
         };
         //this is where we pass the details to the component
