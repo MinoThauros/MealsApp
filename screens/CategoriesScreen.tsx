@@ -1,6 +1,7 @@
 import {CATEGORIES} from '../data/dummy-data';
 import { FlatList } from 'react-native';
 import CategoryGridTile from '../components/CategoryGridTile';
+import Category from '../models/category';
 
 
 
@@ -11,14 +12,17 @@ const CategoriesScreen=({navigation}:any):JSX.Element=>{
     //navigation is passed as a prop from project root
 
     const renderCategoryItem=function (itemData:any):JSX.Element {
+        const items:Category=itemData.item;
 
         const pressHandler=()=>{
             navigation.navigate('MealsOverview',{
                 //we render based on a reference passed by itemData
                 //we pass to the called opponent an object which will be taken as a route
-                categoryId:itemData.item.id,//the second element passed in a object
+                categoryId:items.id,//the second element passed in a object
                 //sent as the route params to child
-                categoryName:itemData.item.title
+                categoryName:items.title
+
+                //design pattern: only send the smallest amount of info possible
             })
         };
         //this is where we pass the details to the component
