@@ -2,17 +2,12 @@ import {View, Pressable, Text, Image, StyleSheet,Platform} from 'react-native';
 import Meal from '../models/meal';
 
 
-const MealItem=({
-    title,
-    imageUrl,
-    duration,
-    complexity,
-    affordability,
-    steps
+const MealItem=({details,onPress}:any):JSX.Element=>{//object deconstruction
 
-}:any):JSX.Element=>{//object deconstruction
+    const {title,imageUrl,duration,complexity,affordability}=details;
+
     return <View style={styles.mealItem}>
-        <Pressable>
+        <Pressable onPress={onPress}>
             <View  style={styles.externalView}>
                 <View>
                     <Image

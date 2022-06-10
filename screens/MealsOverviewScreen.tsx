@@ -30,9 +30,13 @@ const MealOverviewScreen=({navigation,route}:any)=>{
         const item:Meal={...itemData.item};
         //we dont need to create a new instance unless we wanna access methods;
         //pure typechecking vs instantiation
+        const onPress=()=>{
+            navigation.navigate('MealDetails')
+        };
+
         return <View>
             <MealItem 
-            {...item}//object deconstruciton; we undo all the key value pairs
+            details={item} onPress={onPress}//object deconstruciton; we undo all the key value pairs
             />
         </View>
     }
