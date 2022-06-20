@@ -23,7 +23,6 @@ const MealItem=({details,onPress}:any):JSX.Element=>{//object deconstruction
                     <Text style={styles.detailItem}>{affordability.toUpperCase()}</Text>
                 </View>
             </View>
-            
         </Pressable>
     </View>
 

@@ -32,9 +32,7 @@ const MealOverviewScreen=({navigation,route}:any)=>{
         //pure typechecking vs instantiation
         const onPress=()=>{
             navigation.navigate('MealDetails',{
-                ingredients:item.ingredients,
-                steps:item.steps,
-                imageUrl:item.imageUrl
+                details:item,
 
             })
         };
