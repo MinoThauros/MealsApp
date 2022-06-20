@@ -14,7 +14,7 @@ import { useEffect, useLayoutEffect } from "react";
 
 const MealOverviewScreen=({navigation,route}:any)=>{
     //given to the component through the Stack.Navigator
-    //const routage=useRoute() as an alternative to fetching the route prop; a hook
+    //const route=useRoute() as an alternative to fetching the route prop; a hook
 
     /** Testing:
      * const {categoryId,categoryName}=route.params;//same name
@@ -23,7 +23,7 @@ const MealOverviewScreen=({navigation,route}:any)=>{
     
     const {categoryId,categoryName}=route.params;//hooks; updated everytime
     console.log(categoryId,categoryName);
-    useLayoutEffect(()=>{//instead of useEffect
+    useLayoutEffect(()=>{//instead of useEffect; triggers on DOM mutation
         navigation.setOptions({title:categoryName});},[categoryId,categoryName,navigation]);
         
     const renderMealItem= (itemData:any):JSX.Element=>{
@@ -33,7 +33,8 @@ const MealOverviewScreen=({navigation,route}:any)=>{
         const onPress=()=>{
             navigation.navigate('MealDetails',{
                 ingredients:item.ingredients,
-                steps:item.steps
+                steps:item.steps,
+                imageUrl:item.imageUrl
 
             })
         };

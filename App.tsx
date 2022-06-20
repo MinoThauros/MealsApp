@@ -73,6 +73,13 @@ export default function App() {
           <Stack.Screen 
           name="MealDetails"
           component={MealDetails}
+          options={{
+            headerStyle:{backgroundColor:'#351401',},//check header prop for stackscreen
+            headerTintColor:'white',
+            contentStyle:{
+              backgroundColor:'white'//background color as a global variable no longer works
+            }
+          }}
           />
         </Stack.Navigator>
       </NavigationContainer> 
