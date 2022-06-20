@@ -1,9 +1,32 @@
-import { Text, View, StyleSheet,Image, Platform, ScrollView } from "react-native";
+import { Text, View, StyleSheet,Image, Platform, ScrollView, Button } from "react-native";
 import ElementHandler from "../components/MealDetailsDisplayer";
 import Meal from "../models/meal";
+import { useLayoutEffect } from "react";
+import { Icon } from "../components/IconButtons";
+
+
+
 const MealDetails=({navigation,route}:any):JSX.Element=>{
 
+   
+
     const details:Meal=route.params.details;//fetching navigation params routine
+
+    const headerButtonAction=()=>{
+        console.log('tapped');
+        navigation.navigate('MealsCategories')
+    };
+
+    useLayoutEffect(()=>{
+        navigation.setOptions({
+            title:details.title,
+            headerRight:()=>{
+                return <Icon icon="home" color="white" onPress={headerButtonAction} />
+            }
+        })},[
+            details.title, 
+            details.id, 
+            navigation] );
     return(
         
         <View style={styles.overallView}>
@@ -85,7 +108,8 @@ const styles=StyleSheet.create({
     detailsTitle:{
         fontSize:18,
         fontStyle:'italic',
-        fontWeight:'bold'
+        fontWeight:'bold',
+        color:'white'
     },
     details:{
         flexDirection:'row',
@@ -103,7 +127,10 @@ const styles=StyleSheet.create({
     detailsBox:{
         flex:1,
         width:'100%',
-        alignItems:'center'
+        alignItems:'center',
+        borderBottomColor:'#d6971a',
+        borderBottomWidth: 4,
+        paddingBottom:15
     },
     title:{
         fontWeight:'bold',
