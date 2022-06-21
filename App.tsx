@@ -6,14 +6,44 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MealOverviewScreen from './screens/MealsOverviewScreen';
 import MealDetails from './screens/MealDetails';
 import {createDrawerNavigator} from '@react-navigation/drawer'
-
+import FavortieScreens from './screens/FavoriteScreen';
+import {Ionicons} from '@expo/vector-icons'
 const Stack=createNativeStackNavigator();
 const Drawer= createDrawerNavigator();
-const DrawerNavigator=()=>{
-  return 
-  <Drawer.Navigator useLegacyImplementation={false}>
 
-  </Drawer.Navigator>
+const DrawerNavigator=():JSX.Element=>{
+  return (<Drawer.Navigator
+   useLegacyImplementation={false}
+   screenOptions={{//setting default settings
+    headerStyle:{
+      backgroundColor:'#351401',
+      shadowOpacity: 0,
+      //borderBottomWidth: 0  Just in case.
+    },//check header prop for stackscreen
+    headerTintColor:'white',
+    sceneContainerStyle:{
+      backgroundColor:'#3f2f25'//background color as a global variable no longer works
+    },
+    drawerContentStyle:{backgroundColor:'#3f2f25'},
+    drawerInactiveTintColor:'white',
+    drawerActiveBackgroundColor:'#e4baa1'
+
+    }} >
+            <Drawer.Screen 
+              name='My Categories' 
+              component={CategoriesScreen} 
+              options={{
+                drawerIcon:({color,size}:any)=>(<Ionicons name="list-circle" color={color} size={size}/>)
+              }}/>
+            <Drawer.Screen 
+              name='Favorites' 
+              component={FavortieScreens}
+              options={{
+                drawerIcon:({color,size}:any)=>(<Ionicons name="star" color={color} size={size}/>)
+              }}
+              />
+          </Drawer.Navigator>
+          )
 }/** */
 
 
@@ -25,12 +55,13 @@ export default function App() {
         <Stack.Navigator screenOptions={{//setting default settings
           headerStyle:{backgroundColor:'#351401',},//check header prop for stackscreen
           headerTintColor:'white',
-          contentStyle:{
-            backgroundColor:'#3f2f25'//background color as a global variable no longer works
-          }
+          contentStyle:{backgroundColor:'#3f2f25'},
+          //background color as a global variable no longer works
+
         }}>
-          <Stack.Screen name='MealsCategories' component={CategoriesScreen} options={{
-            title:'All Categories',
+          <Stack.Screen name='Drawer' component={DrawerNavigator} options={{
+            //title:'All Categories', is hidden anyways
+            headerShown:false//as we don't want the header from screennavigator
             /**
              * headerStyle:{backgroundColor:'#351401',},//check header prop for stackscreen
             headerTintColor:'white',

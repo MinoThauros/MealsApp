@@ -34,8 +34,9 @@ const styles=StyleSheet.create({
         shadowOpacity:0.25,
         shadowOffset:{width:0, height:2},
         shadowRadius:8,
-        backgroundColor:'white',//needed for IOs
-        overflow: Platform.OS==='android' ? 'hidden':'visible'//no need to be tracked dynamically
+        //backgroundColor:'white',needed for IOs
+        overflow: Platform.OS==='android' ? 'hidden':'visible',//no need to be tracked dynamically
+        borderTopColor:'#351401',
         
     },
 

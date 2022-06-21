@@ -14,7 +14,7 @@ const MealDetails=({navigation,route}:any):JSX.Element=>{
 
     const headerButtonAction=()=>{
         console.log('tapped');
-        navigation.navigate('MealsCategories')
+        navigation.navigate('Drawer')
     };
 
     useLayoutEffect(()=>{
