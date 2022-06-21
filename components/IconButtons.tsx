@@ -5,7 +5,7 @@ export const Icon=({icon,color,onPress}:any)=>{
 
     return (
         <Pressable onPress={onPress} style={
-            ({pressed})=>pressed && styles.clicked
+            ({pressed})=>pressed && styles.clicked //
         }>
             <Ionicons name={icon} size={24} color={color} />
         </Pressable>

@@ -125,8 +125,8 @@ const styles=StyleSheet.create({
         color:'white'
     },
     detailsBox:{
-        flex:1,
-        width:'100%',
+   
+        //width:'100%',
         alignItems:'center',
         borderBottomColor:'#d6971a',
         borderBottomWidth: 4,
