@@ -5,8 +5,17 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MealOverviewScreen from './screens/MealsOverviewScreen';
 import MealDetails from './screens/MealDetails';
+import {createDrawerNavigator} from '@react-navigation/drawer'
 
 const Stack=createNativeStackNavigator();
+const Drawer= createDrawerNavigator();
+const DrawerNavigator=()=>{
+  return 
+  <Drawer.Navigator useLegacyImplementation={false}>
+
+  </Drawer.Navigator>
+}/** */
+
 
 export default function App() {
   return (
