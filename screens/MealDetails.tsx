@@ -1,32 +1,38 @@
 import { Text, View, StyleSheet,Image, Platform, ScrollView, Button } from "react-native";
 import ElementHandler from "../components/MealDetailsDisplayer";
 import Meal from "../models/meal";
-import { useLayoutEffect } from "react";
+import { useLayoutEffect,useContext } from "react";
 import { Icon } from "../components/IconButtons";
+import {FavoritesContext} from '../store/context/favorites-context'
 
 
 
 const MealDetails=({navigation,route}:any):JSX.Element=>{
-
-   
-
     const details:Meal=route.params.details;//fetching navigation params routine
+    const favoriteMealCtx=useContext(FavoritesContext);//needs to be exported as a context; we hook to it
+    const mealIsFavorite:boolean=favoriteMealCtx.ids.includes(details.id);
+
 
     const headerButtonAction=()=>{
-        console.log('tapped');
-        navigation.navigate('Drawer')
+        //navigation.navigate('Drawer')
+        if (mealIsFavorite){
+            favoriteMealCtx.removeFavorite(details.id)
+        }
+        else{
+            favoriteMealCtx.addFavorite(details.id)
+        }
     };
 
     useLayoutEffect(()=>{
         navigation.setOptions({
             title:details.title,
             headerRight:()=>{
-                return <Icon icon="home" color="white" onPress={headerButtonAction} />
+                return <Icon icon={mealIsFavorite ? 'star': 'star-outline'} color="white" onPress={headerButtonAction} />
             }
         })},[
             details.title, 
             details.id, 
-            navigation] );
+            navigation, headerButtonAction] );
     return(
         
         <View style={styles.overallView}>
