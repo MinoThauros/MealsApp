@@ -1,6 +1,7 @@
 import Meal from "../../models/meal";
 import { View, FlatList, StyleSheet } from "react-native";
 import MealItem from "../MealItem";
+import { useNavigation } from '@react-navigation/native';
 /**
  * Takes care of displaying a list of meals;
  * Will navigate to MealDetails page while passing down the desired Meal details
@@ -8,18 +9,17 @@ import MealItem from "../MealItem";
  * @param  navigation: received from parent component
  * @returns JSX.Element
  */
-const MealsDisplayer=({displayedmeals,navigation}:any):JSX.Element=>{
+const MealsDisplayer=({displayedmeals}:any):JSX.Element=>{
+
+    const navigation=useNavigation();
     const displayedMeals:Meal[]=displayedmeals;
-    
+
     const renderMealItem= (itemData:any):JSX.Element=>{
         const item:Meal={...itemData.item};
         //we dont need to create a new instance unless we wanna access methods;
         //pure typechecking vs instantiation
         const onPress=()=>{
-            navigation.navigate('MealDetails',{
-                details:item,
-
-            })
+            navigation.navigate('MealDetails' as never,{details:item,}as never)
         };
 
         return <View>
