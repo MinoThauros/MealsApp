@@ -11,7 +11,7 @@ const FavortieScreens=({navigation}:any):any=>{
     //navigation prop is exposed to drawer navigations as well
     //const favoriteMealsContext=useContext(FavoritesContext);
 
-    const favoriteMealIds=useSelector((state:any)=>state.favoriteMeals.ids);
+    const favoriteMealIds=useSelector((state:any)=>state.favoriteMeals.ids);//selecting the desired state
 
     //const favoriteMeals:string[]=favoriteMealsContext.ids;//contains the array of ids
 

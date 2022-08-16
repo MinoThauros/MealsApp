@@ -57,7 +57,7 @@ export default function App() {
     <StatusBar style='dark'/>
 
       {/*<FavoriteContextProvider>*/}
-      <Provider  store={store}>
+      <Provider store={store}>
           <NavigationContainer>
           <Stack.Navigator screenOptions={{//setting default settings
             headerStyle:{backgroundColor:'#351401',},//check header prop for stackscreen

@@ -6,6 +6,7 @@ import { Icon } from "../components/IconButtons";
 import { addFavorites,removeFavorites } from "../store/redux/favorites";
 import { useSelector,useDispatch } from "react-redux";
 
+
 const MealDetails=({navigation,route}:any):JSX.Element=>{
     const details:Meal=route.params.details;//fetching navigation params routine
     //const favoriteMealCtx=useContext(FavoritesContext);
