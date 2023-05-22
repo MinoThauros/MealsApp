@@ -3,24 +3,31 @@ import ElementHandler from "../components/MealDetailsDisplayer";
 import Meal from "../models/meal";
 import { useLayoutEffect,useContext } from "react";
 import { Icon } from "../components/IconButtons";
-import {FavoritesContext} from '../store/context/favorites-context'
-
+import { addFavorites,removeFavorites } from "../store/redux/favorites";
+import { useSelector,useDispatch } from "react-redux";
 
 
 const MealDetails=({navigation,route}:any):JSX.Element=>{
     const details:Meal=route.params.details;//fetching navigation params routine
-    const favoriteMealCtx=useContext(FavoritesContext);//needs to be exported as a context; we hook to it
-    const mealIsFavorite:boolean=favoriteMealCtx.ids.includes(details.id);
+    //const favoriteMealCtx=useContext(FavoritesContext);
+    //needs to be exported as a context; we hook to it
+    //essentially gives us access to the context of that component at a global level
+    //const mealIsFavorite:boolean=favoriteMealCtx.ids.includes(details.id);
 
+    const favoriteMealIds=useSelector((state:any)=>state.favoriteMeals.ids);
+    const dispatch=useDispatch();
+    const mealIsFavorite:boolean=favoriteMealIds.includes(details.id);
 
     const headerButtonAction=()=>{
         //navigation.navigate('Drawer')
         if (mealIsFavorite){
-            favoriteMealCtx.removeFavorite(details.id)
+            //favoriteMealCtx.removeFavorite(details.id)
+            dispatch(removeFavorites({id:details.id}));
         }
         else{
-            favoriteMealCtx.addFavorite(details.id)
-        }
+            //favoriteMealCtx.addFavorite(details.id)
+            dispatch(addFavorites({id:details.id}));
+        }//payload is passed to the method
     };
 
     useLayoutEffect(()=>{
