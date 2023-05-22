@@ -9,6 +9,8 @@ import {createDrawerNavigator} from '@react-navigation/drawer'
 import FavortieScreens from './screens/FavoriteScreen';
 import {Ionicons} from '@expo/vector-icons';
 import FavoriteContextProvider from './store/context/favorites-context';
+import * as encoding from 'text-encoding';
+
 
 const Stack=createNativeStackNavigator();
 const Drawer= createDrawerNavigator();
